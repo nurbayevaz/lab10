@@ -1,0 +1,191 @@
+from abc import ABC, abstractmethod
+
+class Vehicle(ABC):
+    @abstractmethod
+    def move(self):
+        pass
+
+    @abstractmethod
+    def fuel_type(self):
+        pass
+
+
+class Car(Vehicle):
+    def move(self):
+        return "Көлік төрт дөңгелекпен жүреді"
+
+    def fuel_type(self):
+        return "Бензин немесе дизель"
+
+
+class Bicycle(Vehicle):
+    def move(self):
+        return "Велосипед педаль көмегімен қозғалады"
+
+    def fuel_type(self):
+        return "Адам энергиясы"
+
+
+from abc import ABC, abstractmethod
+
+class DatabaseInterface(ABC):
+
+    @abstractmethod
+    def connect(self):
+        pass
+
+    @abstractmethod
+    def execute_query(self):
+        pass
+
+    @abstractmethod
+    def close(self):
+        pass
+
+
+class SQLiteDatabase(DatabaseInterface):
+    def connect(self):
+        print("SQLite дерекқорына қосылу...")
+
+    def execute_query(self):
+        print("SQLite сұранысын орындау...")
+
+    def close(self):
+        print("SQLite қосылымын жабу...")
+
+
+class PostgreSQLDatabase(DatabaseInterface):
+    def connect(self):
+        print("PostgreSQL дерекқорына қосылу...")
+
+    def execute_query(self):
+        print("PostgreSQL сұранысын орындау...")
+
+    def close(self):
+        print("PostgreSQL қосылымын жабу...")
+
+
+from abc import ABC, abstractmethod
+
+class Logger(ABC):
+
+    def header(self):
+        print("=== LOG START ===")
+
+    @abstractmethod
+    def log(self, message):
+        pass
+
+
+class ConsoleLogger(Logger):
+    def log(self, message):
+        self.header()
+        print(message)
+
+
+class FileLogger(Logger):
+    def log(self, message):
+        self.header()
+        with open("log.txt", "a", encoding="utf-8") as f:
+            f.write(message + "\n")
+
+
+from abc import ABC, abstractmethod
+
+class Vehicle(ABC):
+    @abstractmethod
+    def move(self):
+        pass
+
+    @abstractmethod
+    def fuel_type(self):
+        pass
+
+
+class Car(Vehicle):
+    def move(self):
+        return "Көлік жолмен жүреді"
+
+    def fuel_type(self):
+        return "Бензин немесе дизель"
+
+
+class Bicycle(Vehicle):
+    def move(self):
+        return "Велосипед педаль арқылы қозғалады"
+
+    def fuel_type(self):
+        return "Отынсыз (адам күші)"
+
+
+class Airplane(Vehicle):
+    def move(self):
+        return "Ұшақ ауада ұшады"
+
+    def fuel_type(self):
+        return "Авиакеросин"
+
+
+class Train(Vehicle):
+    def move(self):
+        return "Пойыз рельспен жүреді"
+
+    def fuel_type(self):
+        return "Электр энергиясы немесе дизель"
+
+
+vehicles = [Car(), Bicycle(), Airplane(), Train()]
+
+for v in vehicles:
+    print(v.move())
+
+
+from abc import ABC, abstractmethod
+
+class PaymentSystem(ABC):
+
+    @abstractmethod
+    def authorize(self):
+        pass
+
+    @abstractmethod
+    def process(self):
+        pass
+
+    @abstractmethod
+    def refund(self):
+        pass
+
+
+class PayPal(PaymentSystem):
+    def authorize(self):
+        print("PayPal авторизациясы...")
+
+    def process(self):
+        print("PayPal төлемін өңдеу...")
+
+    def refund(self):
+        print("PayPal арқылы қайтару орындалды!")
+
+
+class KaspiPay(PaymentSystem):
+    def authorize(self):
+        print("Kaspi авторизациясы...")
+
+    def process(self):
+        print("Kaspi төлемін өңдеу...")
+
+    def refund(self):
+        print("Kaspi қайтару орындалды!")
+
+
+class VisaPayment(PaymentSystem):
+    def authorize(self):
+        print("Visa авторизациясы...")
+
+    def process(self):
+        print("Visa төлемін өңдеу...")
+
+    def refund(self):
+        print("Visa арқылы қайтару орындалды!")
+
